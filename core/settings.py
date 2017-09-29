@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'coreapp.apps.CoreappConfig',
 ]
 
 MIDDLEWARE = [
@@ -75,11 +76,18 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
 DATABASES = {
+    'ldap': {
+        'ENGINE': 'ldapdb.backends.ldap',
+        'NAME': 'ldap://10.82.0.127/',
+        'USER': 'uid=admin,ou=people,dc=air-eisti,dc=fr',
+        'PASSWORD': 'admin',
+    },
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+DATABASE_ROUTERS = ['ldapdb.router.Router']
 
 
 # Password validation
