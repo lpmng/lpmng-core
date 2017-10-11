@@ -9,12 +9,15 @@ Clone project and cd into it
 You will need openldap library:
 
 ### Debian/Ubuntu:
+
 ```
 # apt-get install libsasl2-dev python-dev libldap2-dev libssl-dev
 ```
+TODO: test if it needs other package for python 3
+
 ### RedHat/Fedora:
 ```
-# yum install python-devel openldap-devel
+# yum/dnf install python3-devel openldap-devel
 ```
 
 ## Python dependencies
@@ -22,7 +25,7 @@ You will need openldap library:
 Create virtualenv and activate it:
 ```
 $ virtualenv -p python3 venv
-(venv)$ source venv/bin/activate
+$ source venv/bin/activate
 ```
 
 Install dependencies:
