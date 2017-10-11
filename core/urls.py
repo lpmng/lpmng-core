@@ -19,7 +19,7 @@ from rest_framework import routers
 from coreapp import views
 
 router = routers.DefaultRouter()
-router.register(r'users', views.LdapUserViewSet)
+router.register(r'users', views.LdapUserViewSet, base_name='user-view')
 
 urlpatterns = [
     url(r'^', include(router.urls)),

@@ -90,7 +90,7 @@ CORS_ALLOW_METHODS = (
 DATABASES = {
     'ldap': {
         'ENGINE': 'ldapdb.backends.ldap',
-        'NAME': 'ldap://127.0.0.1/',
+        'NAME': 'ldap://172.16.8.101/',
         'USER': 'uid=admin,ou=people,dc=air-eisti,dc=fr',
         'PASSWORD': 'admin',
     },
