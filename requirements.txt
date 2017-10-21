@@ -1,4 +1,12 @@
+certifi==2017.7.27.1
+chardet==3.0.4
 Django==1.11.5
+django-cors-headers==2.1.0
 django-ldapdb==0.9.0
 djangorestframework==3.6.4
-django_cors_headers==2.1.0
+idna==2.6
+pyldap==2.4.37
+pytz==2017.2
+PyYAML==3.12
+requests==2.18.4
+urllib3==1.22

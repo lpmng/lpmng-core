@@ -1,0 +1,4 @@
+user:
+  post_create:
+    url:
+      - https://callback/url
