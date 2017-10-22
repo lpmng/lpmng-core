@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/lpmng/lpmng-core.svg?branch=master)](https://travis-ci.org/lpmng/lpmng-core)
+[![Coverage Status](https://coveralls.io/repos/github/lpmng/lpmng-core/badge.svg?branch=master)](https://coveralls.io/github/lpmng/lpmng-core?branch=master)
+
 # lpmng-core
 Core for the next generation LAN party manager
 
