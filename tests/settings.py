@@ -5,13 +5,18 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 SECRET_KEY = 'fake-key'
 INSTALLED_APPS = [
-    "tests",
+    'django.contrib.contenttypes',
+    'django.contrib.auth',
+    'coreapp',
+    'tests',
 ]
+
+ROOT_URLCONF = 'core.urls'
 
 DATABASES = {
     'ldap': {
         'ENGINE': 'ldapdb.backends.ldap',
-        'NAME': 'ldap://172.17.4.164/',
+        'NAME': 'ldap://192.168.56.101/',
         'USER': 'uid=admin,ou=people,dc=air-eisti,dc=fr',
         'PASSWORD': 'admin',
     },
