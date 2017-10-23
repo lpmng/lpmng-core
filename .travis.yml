@@ -1,5 +1,7 @@
 language: python
 install:
+  - sudo apt-get -qq update
+  - sudo apt-get install -y slapd ldap-utils
   - pip install -r requirements.txt
   - pip install python-coveralls
 python:
@@ -7,11 +9,6 @@ python:
 env:
   global:
     - LDAP_URL="ldap://127.0.0.1:3890"
-addon:
-  apt:
-    packages:
-      - sldap
-      - ldap-utils
 before_script:
   - ./tests/setup_ldap.sh
 script:
