@@ -39,11 +39,3 @@ objectclass: groupofnames
 cn: supergalaydaigurren
 description: Games servers group
 member: uid=admin,ou=people,dc=air-eisti,dc=fr
-
-# Adding admin user
-dn: uid=admin,ou=people,dc=air-eisti,dc=fr
-objectclass: inetOrgPerson
-cn: Admin-Sama
-sn: Admin
-uid: admin
-userpassword: {SSHA}l2d60fsr2K0RTsDw+FKnHCOr1ur2d/6c
