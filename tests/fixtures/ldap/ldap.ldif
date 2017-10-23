@@ -1,0 +1,49 @@
+version: 1
+# Create initial structure of the ldap
+# Run command: ldapadd -H ldap://localhost -x -D 'uid=admin,dc=air-eisti,dc=fr' -f air-eisti.ldif -w admin
+
+# Create top-level object in domain
+dn: dc=air-eisti,dc=fr
+objectClass: top
+objectClass: dcObject
+objectclass: organization
+o: air-eisti
+
+# Adding groups organisation
+dn: ou=groups,dc=air-eisti,dc=fr
+objectclass:organizationalunit
+ou: groups
+
+# Adding users organisation
+dn: ou=people,dc=air-eisti,dc=fr
+objectclass:organizationalunit
+ou: people
+
+# Adding admins group
+dn: cn=seitokai,ou=groups,dc=air-eisti,dc=fr
+objectclass: groupofnames
+cn: seitokai
+description: Admins group
+member: uid=admin,ou=people,dc=air-eisti,dc=fr
+
+# Adding users group
+dn: cn=userkun,ou=groups,dc=air-eisti,dc=fr
+objectclass: groupofnames
+cn: userkun
+description: Users group
+member: uid=admin,ou=people,dc=air-eisti,dc=fr
+
+# Adding games servers group
+dn: cn=supergalaydaigurren,ou=groups,dc=air-eisti,dc=fr
+objectclass: groupofnames
+cn: supergalaydaigurren
+description: Games servers group
+member: uid=admin,ou=people,dc=air-eisti,dc=fr
+
+# Adding admin user
+dn: uid=admin,ou=people,dc=air-eisti,dc=fr
+objectclass: inetOrgPerson
+cn: Admin-Sama
+sn: Admin
+uid: admin
+userpassword: {SSHA}l2d60fsr2K0RTsDw+FKnHCOr1ur2d/6c

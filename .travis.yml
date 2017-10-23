@@ -4,6 +4,16 @@ install:
   - pip install python-coveralls
 python:
   - 3.6
+env:
+  global:
+    - LDAP_URL="ldap://127.0.0.1:3890"
+addon:
+  apt:
+    packages:
+      - sldap
+      - ldap-utils
+before_script:
+  - ./tests/setup_ldap.sh
 script:
   - coverage run --source="coreapp" runtests.py
 after_success:
