@@ -39,7 +39,24 @@ class HookTestCase(TestCase):
 
         coreapp.hooks.Hook.call(
             fake_instance, 'user', 'post_create', sentinel.param)
-        test_action['url'].assert_called()
+        test_action['url'].assert_called_with(
+            'https://callback/url', 'user', 'post_create', sentinel.param)
+
+    def test_call_not_called(self):
+        fake_instance = MagicMock()
+        fake_instance.config = self.test_config
+        test_action = {'url': MagicMock()}
+
+        fake_instance.actions = test_action
+
+        test_cases = (
+            (fake_instance, 'notUser', 'post_create', sentinel.param),
+            (fake_instance, 'user', 'notPostCreate', sentinel.param)
+        )
+        for test_case in test_cases:
+            with self.subTest():
+                coreapp.hooks.Hook.call(*test_case)
+                test_action['url'].assert_not_called()
 
     def test_register_action(self):
         coreapp.hooks.Hook.register_action('test_action', sentinel.test_action)
