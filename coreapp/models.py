@@ -21,3 +21,14 @@ class LdapUser(ldapdb.models.Model):
 
     def __unicode__(self):
         return self.uid
+
+
+class LdapGroup(ldapdb.models.Model):
+    base_dn = "ou=groups,dc=air-eisti,dc=fr"
+    object_classes = ['groupOfNames']
+
+    name = CharField(db_column='cn', max_length=200, primary_key=True)
+    members = ListField(db_column='member', default=[])
+
+    def __unicode__(self):
+        return self.name
