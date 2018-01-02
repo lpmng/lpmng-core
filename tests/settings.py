@@ -16,7 +16,7 @@ ROOT_URLCONF = 'core.urls'
 DATABASES = {
     'ldap': {
         'ENGINE': 'ldapdb.backends.ldap',
-        'NAME': os.environ.get('LDAP_URL', 'ldap://172.16.8.101/'),
+        'NAME': os.environ.get('LDAP_URL', 'ldap://192.168.56.101/'),
         'USER': 'uid=admin,ou=people,dc=air-eisti,dc=fr',
         'PASSWORD': 'admin',
     },

@@ -23,7 +23,6 @@ router.register(r'users', views.LdapUserViewSet, base_name='user-view')
 
 urlpatterns = [
     url(r'^', include(router.urls)),
-    url(r'^groups/(?P<uid>[a-zA-Z0-9]+)/$', views.LdapGroupView.as_view()),
 
     url(r'^admin/', admin.site.urls),
 ]
