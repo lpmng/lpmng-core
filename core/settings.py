@@ -25,7 +25,7 @@ SECRET_KEY = 'c%+(qd$kg(zok0fz+yii53$@f3za+$bqr2s5!g#cow7agraw#_'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -84,13 +84,15 @@ CORS_ALLOW_METHODS = (
     'POST',
     'PUT',
 )
+
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
-
+# ldapdb stays in case we need to connect to the old database
 DATABASES = {
     'ldap': {
         'ENGINE': 'ldapdb.backends.ldap',
-        'NAME': 'ldap://172.16.8.101/',
+        # 'NAME': 'ldap://192.168.56.101/',
+        'NAME': 'ldap://172.17.4.164/',
         'USER': 'uid=admin,ou=people,dc=air-eisti,dc=fr',
         'PASSWORD': 'admin',
     },
@@ -119,6 +121,10 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+# Custom auth user
+# https://docs.djangoproject.com/fr/2.0/topics/auth/customizing/#substituting-a-custom-user-model
+AUTH_USER_MODEL = 'coreapp.User'
 
 
 # Internationalization

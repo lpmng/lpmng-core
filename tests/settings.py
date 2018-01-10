@@ -7,7 +7,7 @@ SECRET_KEY = 'fake-key'
 INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.auth',
-    'coreapp',
+    'coreapp.apps.CoreappConfig',
     'tests',
 ]
 
@@ -26,3 +26,5 @@ DATABASES = {
     }
 }
 DATABASE_ROUTERS = ['ldapdb.router.Router']
+
+AUTH_USER_MODEL = 'coreapp.User'

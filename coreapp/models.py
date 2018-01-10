@@ -1,6 +1,12 @@
 from ldapdb.models.fields import CharField, IntegerField, ListField
+from django.contrib.auth.models import AbstractUser
+from django.db import models
 
 import ldapdb.models
+
+
+class User(AbstractUser):
+    tel = models.CharField(max_length=20, default="")
 
 
 class LdapUser(ldapdb.models.Model):

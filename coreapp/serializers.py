@@ -1,8 +1,23 @@
 from rest_framework import serializers
-from coreapp.models import LdapUser
+from django.contrib.auth.hashers import make_password
+from coreapp.models import User
 from coreapp.utils import hash_password
 
 
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ('username', 'first_name', 'last_name', 'email', 'password', 'tel')
+        extra_kwargs = {
+            # Allow to set pwd, but disallow getting the hash from LDAP
+            'password': {'write_only': True}
+        }
+
+    def validate_password(self, value: str):
+        return make_password(value)
+
+
+"""
 class LdapUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = LdapUser
@@ -27,4 +42,4 @@ class LdapUserSerializer(serializers.ModelSerializer):
             setattr(instance, attr_name, attr_value)
 
         instance.save()
-        return instance
+        return instance"""
