@@ -1,17 +1,13 @@
 from rest_framework import viewsets
-from rest_framework import permissions
-from rest_framework import status
-from rest_framework.response import Response
-from rest_framework.views import APIView
 from coreapp.models import User
 from coreapp.serializers import UserSerializer
-from coreapp.permissions import IsSelfOrStaffPermission
+from coreapp.permissions import IsSelfOrStaffPermission, TokenHasReadWriteScopeOrCreate
 from django.db.models import Q
 
 
 class UserViewSet(viewsets.ModelViewSet):
     serializer_class = UserSerializer
-    permission_classes = (IsSelfOrStaffPermission,)
+    permission_classes = (IsSelfOrStaffPermission, TokenHasReadWriteScopeOrCreate,)
     lookup_field = 'username'
 
     def get_queryset(self):

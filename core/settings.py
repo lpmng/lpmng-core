@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'oauth2_provider',
     'rest_framework',
     'coreapp.apps.CoreappConfig',
     'corsheaders',
@@ -125,6 +126,24 @@ AUTH_PASSWORD_VALIDATORS = [
 # Custom auth user
 # https://docs.djangoproject.com/fr/2.0/topics/auth/customizing/#substituting-a-custom-user-model
 AUTH_USER_MODEL = 'coreapp.User'
+
+
+# Authentication Backends
+# https://django-oauth-toolkit.readthedocs.io/en/latest/rest-framework/getting_started.html
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'oauth2_provider.contrib.rest_framework.OAuth2Authentication',
+    ),
+
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    )
+}
+
+OAUTH2_PROVIDER = {
+    # this is the list of available scopes
+    'SCOPES': {'read': 'Read scope', 'write': 'Write scope'}
+}
 
 
 # Internationalization
