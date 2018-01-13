@@ -1,7 +1,10 @@
 from rest_framework import viewsets
+from rest_framework.views import APIView
+from rest_framework.response import Response
 from coreapp.models import User
 from coreapp.serializers import UserSerializer
 from coreapp.permissions import IsSelfOrStaffPermission, TokenHasReadWriteScopeOrCreate
+from oauth2_provider.contrib.rest_framework import TokenHasReadWriteScope
 from django.db.models import Q
 
 
@@ -27,6 +30,15 @@ class UserViewSet(viewsets.ModelViewSet):
             Q(first_name__icontains=query) |
             Q(last_name__icontains=query)
         )
+
+
+class SelfView(APIView):
+    permission_classes = (IsSelfOrStaffPermission, TokenHasReadWriteScope,)
+
+    def get(self, request, format=None):
+        user = request.user
+        serializer = UserSerializer(user)
+        return Response(serializer.data)
 
 
 """

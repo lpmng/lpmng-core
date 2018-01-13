@@ -23,7 +23,8 @@ router.register(r'users', views.UserViewSet, base_name='user-view')
 
 urlpatterns = [
     url(r'^', include(router.urls)),
-    url(r'^api-auth/', include('rest_framework.urls')),
+    url(r'^me/', views.SelfView.as_view()),
+    url(r'^accounts/', include('rest_framework.urls')),
     url(r'^o/', include('oauth2_provider.urls', namespace='oauth2_provider')),
     url(r'^admin/', admin.site.urls),
 ]
