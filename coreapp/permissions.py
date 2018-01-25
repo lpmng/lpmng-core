@@ -10,6 +10,11 @@ class IsSelfOrStaffPermission(permissions.BasePermission):
         return obj == request.user or request.user.is_staff
 
 
+class IsAdminUserOrCreate(permissions.IsAdminUser):
+    def has_permission(self, request, view):
+        return view.action == "create" or super().has_permission(request, view)
+
+
 class TokenHasReadWriteScopeOrCreate(TokenHasReadWriteScope):
     """
     Permission to create user for anyone or check if TokenHasReadWriteScope

@@ -7,10 +7,26 @@ from coreapp.utils import hash_password
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('username', 'first_name', 'last_name', 'email', 'password', 'tel')
+        fields = ('username', 'first_name', 'last_name', 'email',
+                  'password', 'cotisant', 'tel', 'nbSessions')
         extra_kwargs = {
             # Allow to set pwd, but disallow getting the hash from LDAP
             'password': {'write_only': True}
+        }
+
+    def validate_password(self, value: str):
+        return make_password(value)
+
+
+class SelfUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ('username', 'first_name', 'last_name', 'email',
+                  'password', 'cotisant', 'tel', 'nbSessions')
+        extra_kwargs = {
+            'password': {'write_only': True},
+            'username': {'read_only': True},
+            'cotisant': {'read_only': True}
         }
 
     def validate_password(self, value: str):
