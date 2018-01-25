@@ -90,13 +90,6 @@ CORS_ALLOW_METHODS = (
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 # ldapdb stays in case we need to connect to the old database
 DATABASES = {
-    'ldap': {
-        'ENGINE': 'ldapdb.backends.ldap',
-        # 'NAME': 'ldap://192.168.56.101/',
-        'NAME': 'ldap://172.17.4.164/',
-        'USER': 'uid=admin,ou=people,dc=air-eisti,dc=fr',
-        'PASSWORD': 'admin',
-    },
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
@@ -142,7 +135,10 @@ REST_FRAMEWORK = {
 
 OAUTH2_PROVIDER = {
     # this is the list of available scopes
-    'SCOPES': {'read': 'Read scope', 'write': 'Write scope'}
+    'SCOPES': {
+        'read': 'Read scope',
+        'write': 'Write scope'
+    }
 }
 
 
