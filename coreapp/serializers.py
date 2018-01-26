@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from django.contrib.auth.hashers import make_password
-from coreapp.models import User
+from coreapp.models import User, Session
 from coreapp.utils import hash_password
 
 
@@ -31,6 +31,20 @@ class SelfUserSerializer(serializers.ModelSerializer):
 
     def validate_password(self, value: str):
         return make_password(value)
+
+
+class SessionSerializer(serializers.ModelSerializer):
+    internet = serializers.BooleanField(default=True)
+
+    class Meta:
+        model = Session
+        fields = ('mac', 'ip4', 'user', 'internet')
+
+    def validate_user(self, value: str):
+        user = User.objects.get(username=value)
+        if len(user.session_set.all()) >= user.nbSessions:  # Si user as utilisé toutes ses sessions
+            raise serializers.ValidationError("Max autorised number of sessions reached")
+        return user
 
 
 """

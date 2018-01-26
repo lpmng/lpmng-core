@@ -20,10 +20,12 @@ from coreapp import views
 
 router = routers.DefaultRouter()
 router.register(r'users', views.UserViewSet, base_name='user-view')
+router.register(r'sessions', views.SessionViewSet, base_name='session-view')
 
 urlpatterns = [
     url(r'^', include(router.urls)),
     url(r'^me/', views.SelfView.as_view()),
+    url(r'^mysession/', views.MySessionView.as_view()),
     url(r'^accounts/', include('rest_framework.urls')),
     url(r'^o/', include('oauth2_provider.urls', namespace='oauth2_provider')),
     url(r'^admin/', admin.site.urls),
