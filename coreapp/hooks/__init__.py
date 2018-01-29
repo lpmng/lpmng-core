@@ -47,7 +47,7 @@ def hook_action_url(action_param, hook_name, hook_action, param):
     requests.post(
         action_param,
         json={'name': hook_name,
-              'action': hook_name,
+              'action': hook_action,
               'param': param})
 
 
