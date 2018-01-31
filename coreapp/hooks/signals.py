@@ -7,6 +7,8 @@ from django.forms.models import model_to_dict
 
 @receiver(post_save)
 def my_handler(sender, created, instance, **kwargs):
+    if not sender.__module__ == 'coreapp.models':
+        return
     hook_name = sender.__name__.lower()
     action_name = 'created' if created else 'updated'
     params = model_to_dict(instance)
