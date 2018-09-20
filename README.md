@@ -20,12 +20,12 @@ TODO: test if it needs other package for python 3
 
 ### RedHat/Fedora:
 ```
-# yum/dnf install python3-devel openldap-devel
+# yum/dnf install python3-devel
 ```
 
 ### Opensuse:
 ```
-# zypper install python3-devel openldap2 openldap2-devel
+# zypper install python3-devel
 ```
 
 ## Python dependencies
@@ -41,7 +41,28 @@ Install dependencies:
 (venv)$ pip install -r requirement.txt
 ```
 
+# Create database
+```
+    (venv)$ python manage.py makemigrations coreapp
+    (venv)$ python manage.py migrate
+    (venv)$ python manage.py createsuperuser
+```
+
+
 # Run development server:
 ```
 (venv)$ python manage.py runserver
 ```
+
+# Add a new App:
+```
+<url>/o/applications/register/
+```
+
+## pour lpmng-admin:
+
+client type : public
+
+Authorization grant type : Resource owner password-based
+
+
