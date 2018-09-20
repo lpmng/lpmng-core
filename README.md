@@ -23,6 +23,11 @@ TODO: test if it needs other package for python 3
 # yum/dnf install python3-devel openldap-devel
 ```
 
+### Opensuse:
+```
+# zypper install python3-devel openldap2 openldap2-devel
+```
+
 ## Python dependencies
 
 Create virtualenv and activate it:
