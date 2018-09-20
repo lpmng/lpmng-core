@@ -1,7 +1,7 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
-import ldapdb.models
+#import ldapdb.models
 
 
 class User(AbstractUser):

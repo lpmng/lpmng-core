@@ -88,14 +88,14 @@ CORS_ALLOW_METHODS = (
 
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
-# ldapdb stays in case we need to connect to the old database
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-DATABASE_ROUTERS = ['ldapdb.router.Router']
+
 
 
 # Password validation
