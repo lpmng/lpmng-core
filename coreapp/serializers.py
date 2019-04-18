@@ -7,10 +7,10 @@ from coreapp.utils import hash_password
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('username', 'first_name', 'last_name', 'email',
-                  'password', 'cotisant', 'tel', 'nbSessions')
+        fields = ('username', 'first_name', 'last_name', 'email', 'password',
+                  'cotisant', 'tel', 'nbSessions', 'is_admin')
         extra_kwargs = {
-            # Allow to set pwd, but disallow getting the hash from LDAP
+            # Allow to set pwd, but disallow getting the hash
             'password': {'write_only': True}
         }
 
