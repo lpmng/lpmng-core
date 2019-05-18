@@ -8,7 +8,7 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ('username', 'first_name', 'last_name', 'email', 'password',
-                  'cotisant', 'tel', 'nbSessions', 'is_admin')
+                  'cotisant', 'tel', 'nbSessions', 'is_staff')
         extra_kwargs = {
             # Allow to set pwd, but disallow getting the hash
             'password': {'write_only': True}
@@ -27,7 +27,7 @@ class SelfUserSerializer(serializers.ModelSerializer):
             'password': {'write_only': True},
             'username': {'read_only': True},
             'cotisant': {'read_only': True},
-            'nbSession': {'read_only': True}
+            'nbSessions': {'read_only': True}
         }
 
     def validate_password(self, value: str):
