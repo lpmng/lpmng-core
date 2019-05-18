@@ -26,7 +26,8 @@ class SelfUserSerializer(serializers.ModelSerializer):
         extra_kwargs = {
             'password': {'write_only': True},
             'username': {'read_only': True},
-            'cotisant': {'read_only': True}
+            'cotisant': {'read_only': True},
+            'nbSession': {'read_only': True}
         }
 
     def validate_password(self, value: str):
